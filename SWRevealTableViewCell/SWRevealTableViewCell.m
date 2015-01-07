@@ -570,6 +570,10 @@ static const CGFloat OverDrawWidth = 60;
         [button setTitle:title forState:UIControlStateNormal];
         [button setImage:image forState:UIControlStateNormal];
 
+        if (self.disabled) {
+            [button setImage:image forState:UIControlStateHighlighted];
+        }
+
         // add button to its utiliyButtonView
         [utilityButtonView addSubview:button];
         [*views addObject:utilityButtonView];
