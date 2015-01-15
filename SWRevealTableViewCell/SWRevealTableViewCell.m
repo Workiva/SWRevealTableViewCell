@@ -572,6 +572,7 @@ static const CGFloat OverDrawWidth = 60;
 
         if (item.disabled) {
             [button setImage:image forState:UIControlStateHighlighted];
+            button.layer.opacity = 0.3f;
         }
 
         // add button to its utiliyButtonView
