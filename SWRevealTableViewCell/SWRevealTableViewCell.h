@@ -1,17 +1,17 @@
 /*
 
  Copyright (c) 2014 Joan Lluch <joan.lluch@sweetwilliamsl.com>
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is furnished
  to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -19,7 +19,7 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
- 
+
 */
 
 
@@ -31,10 +31,10 @@
  pan gestures or developer programmatic actions. Similar to the mail app and but with enhanced features.
 
  RELEASE NOTES
- 
+
  Version 0.3.1 to 0.3.5 (current Version)
     - Bug fixes
- 
+
  Version 0.3.0
     - Major upgrade and refactoring.
     - Support for extended items (similar to delete action of iOS8 mail)
@@ -42,17 +42,17 @@
 
  Version 0.2.1 (Current Version)
     - Bug fixes and some refactoring (on UIActionSheet category and layout)
- 
+
  Version 0.2.0
 
     - Added UIActionSheet category extension
- 
+
  Version 0.1.0
     - Added properties 'rightCascadeReversed', 'leftCascadeReversed', 'bounceBackOnRightOverdraw', 'bounceBackOnLeftOverdraw'
- 
+
  Version 0.0.1
     - Initial Release
- 
+
 */
 
 
@@ -69,7 +69,7 @@
 
 /* A cell button item SWCellButtonItem is a button specialized for revealing behind a SWRevealTableViewCell.
    It is conceptually similar to a UIBarButtonItem except that instances do not implement a target and a action,
-   instead, a handler block must be provided to execute derived actions 
+   instead, a handler block must be provided to execute derived actions
 */
 
 @interface SWCellButtonItem : NSObject
@@ -86,13 +86,14 @@
 @property(nonatomic) UIColor *tintColor;         // default is nil
 @property(nonatomic) NSString *title;            // default is nil
 @property(nonatomic) UIVisualEffect *visualEffect;
+@property(nonatomic) BOOL disabled;
 
 @end
 
 
 #pragma mark - SWCellRevealPosition
 
-/* Enum values for SWRevealTableViewCell's setRevealPosition:animated: and @property revealPosition 
+/* Enum values for SWRevealTableViewCell's setRevealPosition:animated: and @property revealPosition
 */
 
 typedef NS_ENUM(NSInteger, SWCellRevealPosition)
@@ -105,10 +106,10 @@ typedef NS_ENUM(NSInteger, SWCellRevealPosition)
 
     // Center position
     SWCellRevealPositionCenter,
-    
+
     // Right possition, cell is presented right-offseted with utility items on the left
     SWCellRevealPositionRight,
-    
+
     // Right possition, cell is presented right-offseted with first left utility item fully expanded
     SWCellRevealPositionRightExtended,
 };
@@ -146,7 +147,7 @@ typedef NS_ENUM(NSInteger, SWCellRevealMode)
 
 #pragma mark - SWRevealTableViewCell
 
-/* A UITableViewCell subclass capable of presenting right and left utility views similar to the Mail app 
+/* A UITableViewCell subclass capable of presenting right and left utility views similar to the Mail app
 */
 
 @protocol SWRevealTableViewCellDelegate;
@@ -230,7 +231,7 @@ typedef NS_ENUM(NSInteger, SWCellRevealMode)
 @protocol SWRevealTableViewCellDelegate <NSObject>
 @optional
 
-/* Cell position notification 
+/* Cell position notification
 */
 
 // The following delegate methods will be called before and after the cell moves to a position
@@ -240,7 +241,7 @@ typedef NS_ENUM(NSInteger, SWCellRevealMode)
 // This will be called inside the reveal animation, thus you can use it to place your own code that will be animated in sync
 - (void)revealTableViewCell:(SWRevealTableViewCell *)revealTableViewCell animateToPosition:(SWCellRevealPosition)position;
 
-/* Gesture based reveal 
+/* Gesture based reveal
 */
 
 // Implement this to return NO when you want the pan gesture recognizer to be ignored
@@ -257,7 +258,7 @@ typedef NS_ENUM(NSInteger, SWCellRevealMode)
 - (void)revealTableViewCellPanGestureBegan:(SWRevealTableViewCell *)revealTableViewCell;
 - (void)revealTableViewCellPanGestureEnded:(SWRevealTableViewCell *)revealTableViewCell;
 
-/* Reveal progress 
+/* Reveal progress
 */
 
 // The following methods provide a means to track the evolution of the gesture recognizer.
